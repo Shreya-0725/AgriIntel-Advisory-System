@@ -1,0 +1,31 @@
+﻿
+@page
+@model AgriIntel_Advisory_System.Pages.Admin.AdminLoginModel
+@{
+    ViewData["Title"] = "Admin Login";
+    Layout = "_AdminLoginLayout"; 
+}
+
+<div class="login-card">
+    <img src="~/assets/img/newlogo.png" class="mx-auto d-block mb-3" width="100" />
+    <h3>Admin Login</h3>
+
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" type="password" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <p class="text-danger mt-2">@Model.ErrorMessage</p>
+        }
+    </form>
+</div>

@@ -1,0 +1,92 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Farmer.ExpertAdvicesModel
+@{
+    Layout = "_FarmerLayout";
+}
+
+<div class="content">
+    <div class="container-fluid" style="max-width:800px;">
+
+        <div class="breadcrumb mt-2">
+            <a asp-page="/Farmer/FarmDashboard">Dashboard</a> / Expert Advice
+        </div>
+
+        <h2 class="page-title text-center">Get Expert Advice</h2>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div id="successAlert" class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <form method="post">
+            <div class="form-group mb-3">
+                <label>Subject</label>
+                <input type="text" class="form-control" asp-for="NewAdvice.Subject" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Issue Type</label>
+                <input type="text" class="form-control" asp-for="NewAdvice.AdviceType" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Description</label>
+                <textarea class="form-control" rows="4" asp-for="NewAdvice.Description"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Submit Advice Request
+            </button>
+        </form>
+
+        <hr />
+
+        <h5 class="mt-4">Advice History</h5>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Subject</th>
+                    <th>Issue Type</th>
+                    <th>Description</th>
+                    <th>Create Date</th>
+                    <th>Solution</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 1;
+                }
+                @foreach (var item in Model.MyAdvices)
+                {
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.Subject</td>
+                        <td>@item.AdviceType</td>
+                        <td>@item.Description</td>
+                        <td>@item.RequestDate.ToString("dd-MM-yyyy")</td>
+                        <td>@item.Advice</td>
+                        <td>@item.Status</td>
+                    </tr>
+                    count++;
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script>
+    setTimeout(function () {
+        var alertBox = document.getElementById("successAlert");
+        if (alertBox) {
+            alertBox.style.transition = "opacity 0.5s";
+            alertBox.style.opacity = "0";
+            setTimeout(() => alertBox.remove(), 500);
+        }
+    }, 3000); // 3 seconds
+</script>

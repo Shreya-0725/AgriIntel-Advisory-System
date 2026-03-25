@@ -1,0 +1,147 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Admin.ManageSoilTestsModel
+@{
+    Layout = "_AdminLayout";
+}
+
+<!-- ✅ Proper spacing without touching layout -->
+<div style="padding:100px 20px 20px 270px;">
+
+    <!-- Success Message -->
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success" id="msgAlert">
+            @TempData["Message"]
+        </div>
+
+        <script>
+            setTimeout(function () {
+                var msg = document.getElementById("msgAlert");
+                if (msg) {
+                    msg.style.display = "none";
+                }
+            }, 3000);
+        </script>
+    }
+
+    <h2 style="margin-bottom:20px; font-weight:bold; text-align:center;">
+        Manage Soil Tests
+    </h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+
+          
+
+            <thead style="background-color:black;">
+                <tr>
+                    <th style="color:white !important; font-weight:bold !important;">Test Id</th>
+                    <th style="color:white !important; font-weight:bold !important;">Farmer Id</th>
+                    <th style="color:white !important; font-weight:bold !important;">Date</th>
+                    <th style="color:white !important; font-weight:bold !important;">PH</th>
+                    <th style="color:white !important; font-weight:bold !important;">Status</th>
+                    <th style="color:white !important; font-weight:bold !important; width:280px;">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model.SoilTests)
+                {
+                    <tr>
+                        <td>@item.TestId</td>
+                        <td>@item.FarmerId</td>
+                        <td>@item.ApplicationDate.ToShortDateString()</td>
+                        <td>@item.PhLevel</td>
+
+                        <td>
+                            <span class="badge bg-info">
+                                @item.Status
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <div style="display:flex; gap:10px; align-items:center;">
+
+                                <!-- ✅ FORM FOR DROPDOWN + UPDATE -->
+                                <form method="post"
+                                      asp-page-handler="UpdateStatus"
+                                      asp-route-id="@item.TestId"
+                                      style="display:flex; gap:10px; align-items:center;">
+
+                                    <!-- ✅ VIEW BUTTON (Dropdown Heading = View) -->
+                                    <div class="dropdown">
+
+                                        <button class="btn btn-primary btn-sm dropdown-toggle"
+                                                type="button"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            View
+                                        </button>
+
+                                        <div class="dropdown-menu">
+
+                                            <button type="button"
+                                                    class="dropdown-item"
+                                                    onclick="this.closest('form').querySelector('select').value='Approved'">
+                                                Approve
+                                            </button>
+
+                                            <button type="button"
+                                                    class="dropdown-item"
+                                                    onclick="this.closest('form').querySelector('select').value='Rejected'">
+                                                Reject
+                                            </button>
+
+                                            <button type="button"
+                                                    class="dropdown-item"
+                                                    onclick="this.closest('form').querySelector('select').value='Reviewed'">
+                                                Reviewed
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- ✅ HIDDEN SELECT (STORES VALUE) -->
+                                    <select name="status" style="display:none;">
+                                        <option value="Approved">Approved</option>
+                                        <option value="Rejected">Rejected</option>
+                                        <option value="Reviewed">Reviewed</option>
+                                    </select>
+
+                                    <!-- ✅ UPDATE BUTTON -->
+                                    <button type="submit"
+                                            class="btn btn-success btn-sm">
+                                        Update
+                                    </button>
+
+                                </form>
+
+                                <!-- ✅ DELETE BUTTON -->
+                                <form method="post"
+                                      asp-page-handler="Delete"
+                                      asp-route-id="@item.TestId">
+
+                                    <button type="submit"
+                                            class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Delete this soil test?')">
+                                        Delete
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

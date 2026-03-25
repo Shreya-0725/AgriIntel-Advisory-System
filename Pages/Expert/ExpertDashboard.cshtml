@@ -1,0 +1,51 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Expert.ExpertDashboardModel
+@{
+    Layout = "_ExpertLayout";
+}
+
+
+
+<div class="content" style="margin-left:0 !important; padding-left:0 !important;">
+    <div class="container-fluid" style="margin:0 auto; padding:0; max-width:900px;">
+        <h4 class="page-title text-center">Expert Dashboard</h4>
+
+        <div class="row dashboard-cards" style="justify-content:center;">
+
+            <!-- My Profile -->
+            <div class="col-md-6 mb-4">
+                <a asp-page="/Expert/ExpertProfile"
+                   class="card card-stats card-primary text-center text-decoration-none d-block p-4">
+                    <div class="card-body">
+                        <h4 class="card-category">My Profile</h4>
+                        <p class="card-title">View Profile</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Manage Issues -->
+            <div class="col-md-6 mb-4">
+                <a asp-page="/Expert/GiveExpertAdvice"
+                   class="card card-stats card-success text-center text-decoration-none d-block p-4">
+                    <div class="card-body">
+                        <h4 class="card-category">Manage Issues</h4>
+                        <p class="card-title">View & Respond</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Manage Articles -->
+            <div class="col-md-6 mb-4">
+                <a asp-page="/Expert/ManageArticles"
+                   class="card card-stats card-warning text-center text-decoration-none d-block p-4">
+                    <div class="card-body">
+                        <h4 class="card-category">Manage Articles</h4>
+                        <p class="card-title">Add / View Articles</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,80 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Expert.ManageArticlesModel
+@{
+    Layout = "_ExpertLayout";
+}
+
+<div style="margin-top:100px; padding:20px;">
+
+    <h2 style="text-align:center; font-weight:bold;">
+        Manage Articles
+    </h2>
+
+    <!-- ✅ Add Article -->
+    <form method="post">
+
+        <label>Select Image</label>
+        <select asp-for="Article.ImagePath" class="form-control">
+            <option value="/assets/img/image11.png">image1.png</option>
+            <option value="/assets/img/image12.png">image2.png</option>
+            <option value="/assets/img/image8.png">image3.png</option>
+            <option value="/assets/img/image14.jpg">image4.jpg</option>
+        </select>
+
+        <br />
+
+        <input asp-for="Article.TitleEnglish"
+               class="form-control"
+               placeholder="Title English" />
+
+        <br />
+
+        <textarea asp-for="Article.DescriptionEnglish"
+                  class="form-control"
+                  placeholder="Description English"></textarea>
+
+        <br />
+
+        <input asp-for="Article.TitleHindi"
+               class="form-control"
+               placeholder="Title Hindi" />
+
+        <br />
+
+        <textarea asp-for="Article.DescriptionHindi"
+                  class="form-control"
+                  placeholder="Description Hindi"></textarea>
+
+        <br />
+
+        <button type="submit" class="btn btn-success">
+            Publish Article
+        </button>
+
+    </form>
+
+    <hr />
+
+    <h3 style="text-align:center; font-weight:bold;">
+        Existing Articles
+    </h3>
+
+    @foreach (var item in Model.Articles)
+    {
+        <div style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
+
+            <img src="@item.ImagePath" width="150" />
+
+            <h4>@item.TitleEnglish</h4>
+
+            <form method="post" asp-page-handler="Delete">
+                <input type="hidden" name="id" value="@item.ArticleId" />
+                <button type="submit" class="btn btn-danger">
+                    Delete
+                </button>
+            </form>
+
+        </div>
+    }
+
+</div>

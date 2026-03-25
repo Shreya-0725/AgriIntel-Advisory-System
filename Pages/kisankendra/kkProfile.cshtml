@@ -1,0 +1,58 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.kisankendra.kkProfileModel
+@{
+    Layout = "_kisankendraLayout";
+}
+
+<div class="content">
+    <div class="container">
+
+        <div class="card p-4 shadow">
+
+            <h3 class="text-center bg-dark text-white p-2 rounded">
+                Kisan Kendra Profile
+            </h3>
+
+            <div class="row mt-4">
+
+                <div class="col-md-6">
+                    <strong>KK ID:</strong>
+                    <p>@Model.Kendra?.KKId</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Owner Name:</strong>
+                    <p>@Model.Kendra?.OwnerName</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Mobile:</strong>
+                    <p>@Model.Kendra?.MobileNo</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Block:</strong>
+                    <p>@Model.Kendra?.Block</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>State:</strong>
+                    <p>@Model.Kendra?.State?.StateName</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>District:</strong>
+                    <p>@Model.Kendra?.District?.DistrictName</p>
+                </div>
+
+                <div class="col-md-6">
+                    <strong>Village:</strong>
+                    <p>@Model.Kendra?.Village?.VillageName</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

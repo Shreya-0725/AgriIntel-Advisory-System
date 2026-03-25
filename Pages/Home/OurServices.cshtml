@@ -1,0 +1,163 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Home.OurServicesModel
+@{
+    Layout = "_Layout";
+
+}
+
+
+<style>
+    /* FIX BANNER BG IMAGE */
+    .page-banner-area {
+        background-image: url('/assets/img/serviceimage.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 120px 0;
+        text-align: center;
+        color: #fff;
+    }
+
+    /* FIX IMAGE SIZE (SAME FOR ALL) */
+    .service-img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+    }
+</style>
+
+<!-- PAGE BANNER -->
+<div class="page-banner-area">
+    <h2 style="font-weight:800; letter-spacing:2px;">OUR SERVICES</h2>
+
+
+<ul style="list-style:none; padding:0; margin-top:15px; display:inline-flex; gap:10px;">
+    <li>
+        <a asp-page="/Home/Index"
+           style="color:#000; font-weight:600; text-decoration:none;">
+            Home
+        </a>
+    </li>
+    <li style="color:#000;">/</li>
+    <li>
+        <a asp-page="/Home/OurServices"
+           style="color:#000; font-weight:600; text-decoration:none;">
+            Services
+        </a>
+    </li>
+</ul>
+
+</div>
+
+<!-- SERVICES SECTION -->
+<div style="background-color:#f6faf6; padding:80px 0;">
+    <div class="container">
+
+        <!-- SERVICE 1 -->
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <img src="~/assets/img/image7.png"
+                     class="img-fluid rounded shadow service-img">
+            </div>
+            <div class="col-md-6">
+                <h3>Crop Advisory Services</h3>
+                <p>
+                    Crop-specific guidance is provided based on soil type, crop stage,
+                    and local weather conditions. Farmers receive expert advice on
+                    seed selection, irrigation scheduling, fertilizer application,
+                    pest control, and harvesting methods to improve yield and quality.
+                </p>
+            </div>
+        </div>
+
+        <!-- SERVICE 2 -->
+        <div class="row align-items-center mb-5"
+             style="background:#eef5ef; padding:30px; border-radius:12px;">
+            <div class="col-md-6 order-md-2">
+                <img src="~/assets/img/soil testing.png"
+                     class="img-fluid rounded shadow service-img">
+            </div>
+            <div class="col-md-6 order-md-1">
+                <h3>Soil Testing & Soil Health Card</h3>
+                <p>
+                    Farmers can request professional soil testing services to understand
+                    soil nutrient levels and fertility. A digital Soil Health Card is
+                    provided with detailed analysis and fertilizer recommendations
+                    to support sustainable and productive farming.
+                </p>
+            </div>
+        </div>
+
+        <!-- SERVICE 3 -->
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <img src="~/assets/img/img-background1.png"
+                     class="img-fluid rounded shadow service-img">
+            </div>
+            <div class="col-md-6">
+                <h3>Expert Consultation</h3>
+                <p>
+                    Real-time consultation with certified agricultural experts is available
+                    to resolve issues related to pests, crop diseases, irrigation management,
+                    nutrient deficiencies, and yield improvement. This helps farmers take
+                    timely and informed decisions.
+                </p>
+            </div>
+        </div>
+
+        <!-- SERVICE 4 -->
+        <div class="row align-items-center mb-5"
+             style="background:#eef5ef; padding:30px; border-radius:12px;">
+            <div class="col-md-6 order-md-2">
+                <img src="~/assets/img/image9.jpg"
+                     class="img-fluid rounded shadow service-img">
+            </div>
+            <div class="col-md-6 order-md-1">
+                <h3>Government Schemes & Insurance</h3>
+                <p>
+                    Farmers receive assistance in accessing government schemes such as
+                    PM Kisan Samman Nidhi, crop insurance, and subsidy programs.
+                    Kisan Sewa Kendra staff help with documentation, application submission,
+                    and tracking benefits.
+                </p>
+            </div>
+        </div>
+
+        <!-- SERVICE 5 -->
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <img src="~/assets/img/image14.jpg"
+                     class="img-fluid rounded shadow service-img">
+            </div>
+            <div class="col-md-6">
+                <h3>Farmer Query & Support System</h3>
+                <p>
+                    This system allows farmers to submit any queries or doubts related to crop farming,
+                    schemes, soil tests, or other agricultural tasks. Farmers can ask questions freely
+                    without hesitation, and the system ensures that their queries are tracked, organized,
+                    and responded to efficiently. This provides farmers with a reliable way to resolve
+                    issues and make informed decisions independently.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- SERVICE 6 -->
+        <div class="row align-items-center"
+             style="background:#eef5ef; padding:30px; border-radius:12px;">
+            <div class="col-md-6 order-md-2">
+                <img src="~/assets/img/image5.png"
+                     class="img-fluid rounded shadow service-img">
+            </div>
+            <div class="col-md-6 order-md-1">
+                <h3>Kisan Sewa Kendra Support</h3>
+                <p>
+                    Offline assistance is provided for farmers who are not comfortable
+                    with digital platforms. Kisan Sewa Kendra staff help submit applications,
+                    raise service requests, resolve queries, and track application status.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>

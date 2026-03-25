@@ -1,0 +1,93 @@
+﻿
+@page
+@model AgriIntel_Advisory_System.Pages.Admin.ManageQueriesModel
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="main-content" style="margin-left:260px; padding:20px;">
+
+    <div style="text-align:center; padding-top:40px;">
+        <h2 style="font-weight:bold;">View Issues</h2>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="alert alert-success" id="msgAlert">
+            @Model.Message
+        </div>
+
+        <script>
+            setTimeout(function () {
+                var msg = document.getElementById("msgAlert");
+                if (msg) {
+                    msg.style.opacity = "0";
+                    setTimeout(() => msg.remove(), 500);
+                }
+            }, 3000);
+        </script>
+    }
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Query No</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Solution</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Queries)
+            {
+                <tr>
+                    <td>@item.QueryNo</td>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <span class="badge bg-info">
+                            @item.Status
+                        </span>
+                    </td>
+
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.Solution))
+                        {
+                            <p>@item.Solution</p>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Not Resolved</span>
+                        }
+                    </td>
+
+                    <td>
+                        @if (item.Status == "Pending")
+                        {
+                            <form method="post" asp-page-handler="Resolve" asp-route-id="@item.QueryNo">
+                                <textarea name="solution"
+                                          class="form-control"
+                                          placeholder="Enter Solution"
+                                          required></textarea>
+
+                                <button type="submit"
+                                        class="btn btn-success btn-sm mt-2">
+                                    Resolve
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <span class="text-success">Resolved</span>
+                        }
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

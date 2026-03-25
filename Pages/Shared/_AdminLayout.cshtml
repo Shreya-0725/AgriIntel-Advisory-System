@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>AgriIntel Advisory System</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	<link rel="stylesheet" href="~/admin/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+	<link rel="stylesheet" href="~/admin/assets/css/ready.css">
+	<link rel="stylesheet" href="~/admin/assets/css/demo.css">
+	<link rel="stylesheet" href="~/admin/assets/css/main.css">
+	
+	
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<div class="logo-header">
+				<a asp-page="/Admin/AdminDashboard" class="logo">Admin Panel</a>
+				
+				<button class="navbar-toggler sidenav-toggler ml-auto"
+						type="button"
+						data-toggle="collapse"
+						data-target="collapse"
+						aria-controls="sidebar"
+						aria-expanded="false"
+						aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+				</button>
+
+				<button class="topbar-toggler more">
+					<i class="la la-ellipsis-v" style="color:#FFFFFF; font-size:18px;"></i>
+				</button>
+
+			</div>
+
+			<!-- HEADER / NAVBAR -->
+			<nav class="navbar navbar-header navbar-expand-lg">
+				<div class="container-fluid">
+
+					<!-- RIGHT SIDE PROFILE -->
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+
+						<li class="nav-item dropdown">
+							<a class="nav-link profile-pic"
+							   href="#"
+							   id="profileDropdown"
+							   role="button"
+							   data-toggle="dropdown"
+							   aria-haspopup="true"
+							   aria-expanded="false">
+
+								<div class="d-flex align-items-center">
+
+									<!-- Profile Image -->
+                                   <img src="~/admin/assets/img/adminiamge.jpg"
+										 width="36"
+										 height="36"
+										 class="rounded-circle mr-2"
+										 alt="Admin">
+
+									<!-- Text block -->
+									<div class="d-flex flex-column justify-content-center">
+										<span class="font-weight-bold mb-0">Shreya</span>
+										<span class="text-muted small line-height-1">Administrator</span>
+									</div>
+
+									<!-- Arrow (SEPARATE column) -->
+									<span class="ml-2 d-flex align-items-center">
+										<i class="la la-angle-down"></i>
+									</span>
+
+								</div>
+							</a>
+
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li>
+									<a class="dropdown-item" asp-page="/Admin/AdminDashboard">
+										<i class="la la-user mr-2"></i> My Profile
+									</a>
+								</li>
+								<li><hr class="dropdown-divider"></li>
+								<li>
+									<a class="dropdown-item text-danger"
+									   asp-page="/Admin/AdminLogin"
+									   asp-page-handler="Logout">
+										<i class="la la-power-off mr-2"></i> Logout
+									</a>
+								</li>
+
+							</ul>
+						</li>
+
+
+					</ul>
+				</div>
+			</nav>
+
+			
+		</div>
+		<div class="sidebar">
+			<div class="scrollbar-inner sidebar-wrapper">
+				
+
+
+				<ul class="nav flex-column">
+
+					<!-- Dashboard -->
+					<li class="nav-item">
+						<a class="nav-link" asp-page="/Admin/AdminDashboard">
+							Dashboard
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" asp-page="/Admin/ManageFarmers">Manage Farmers</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" asp-page="/Admin/ManageExperts">Manage Experts</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" asp-page="/Admin/ManageStaff">Manage Staff</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" asp-page="/Admin/ManageArticles">Manage Articles</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" asp-page="/Admin/ManageSoilTests">Manage Soil Tests</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" asp-page="/Admin/ViewIssues">View Issues </a>
+					</li>
+
+					<li class="nav-item mt-3">
+						<a asp-page="/Admin/AdminLogin" asp-page-handler="Logout" class="dropdown-item text-danger">
+							Logout
+						</a>
+
+					</li>
+
+				</ul>
+
+
+
+			</div>
+		</div>
+
+		@RenderBody()
+
+		<footer class="footer bg-dark text-light py-3">
+			<div class="container-fluid d-flex justify-content-end align-items-center">
+				<span>&copy; 2026 AGRIINTEL ADVISORY ADMIN PANEL</span>
+			</div>
+		</footer>
+
+
+
+		</div>
+	
+	
+
+	
+</body>
+</html>
+
+
+<script src="~/admin/assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="~/admin/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="~/admin/assets/js/core/popper.min.js"></script>
+<script src="~/admin/assets/js/core/bootstrap.min.js"></script>
+<script src="~/admin/assets/js/plugin/chartist/chartist.min.js"></script>
+<script src="~/admin/assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
+<script src="~/admin/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="~/admin/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<script src="~/admin/assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="~/admin/assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
+<script src="~/admin/assets/js/plugin/chart-circle/circles.min.js"></script>
+<script src="~/admin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="~/admin/assets/js/ready.min.js"></script>
+<script src="~/admin/assets/js/demo.js"></script>

@@ -1,0 +1,109 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Staff.ManageQueriesModel
+@{
+    Layout = "_StaffLayout";
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="breadcrumb mt-2">
+            <a asp-page="/Staff/StaffDashboard">Dashboard</a> / Manage Queries
+        </div>
+
+        <h4 class="page-title text-center">Pending Queries</h4>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div id="successAlert" class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <!-- ================= BOX START ================= -->
+        <div style="border:1px solid #ccc; padding:20px; border-radius:10px; background:#f9f9f9;">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Query No</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Farmer Id</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var query in Model.PendingQueries)
+                    {
+                        <tr>
+                            <td>@query.QueryNo</td>
+                            <td>@query.Title</td>
+                            <td>@query.Description</td>
+                            <td>@query.FarmerId</td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="QueryId" value="@query.QueryNo" />
+
+                                    <input type="text"
+                                           name="SolutionText"
+                                           class="form-control mb-2"
+                                           placeholder="Enter solution"
+                                           required />
+
+                                    <button type="submit"
+                                            class="btn btn-success btn-sm">
+                                        Submit Solution
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <hr />
+
+          
+            <h4 class="text-center mt-4 text-primary font-weight-bold">
+                Resolved Queries
+            </h4>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Query No</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Solution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var query in Model.ResolvedQueries)
+                    {
+                        <tr>
+                            <td>@query.QueryNo</td>
+                            <td>@query.Title</td>
+                            <td>@query.Description</td>
+                            <td>@query.Solution</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <!-- ================= BOX END ================= -->
+
+    </div>
+</div>
+
+<script>
+    setTimeout(function () {
+        var alertBox = document.getElementById("successAlert");
+        if (alertBox) {
+            alertBox.style.transition = "opacity 0.5s";
+            alertBox.style.opacity = "0";
+            setTimeout(() => alertBox.remove(), 500);
+        }
+    }, 3000);
+</script>

@@ -1,0 +1,92 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Staff.StaffDashboardModel
+@{
+    Layout = "_StaffLayout";
+}
+
+
+
+<div class="content" >
+    <div class="container-fluid">
+        <h4 class="page-title text-center">Staff Dashboard</h4>
+
+        <!-- ================= MAIN INFO BOX ================= -->
+        <div class="staff-main-box">
+
+            <div class="welcome-text text-center mb-4">
+                <strong>Welcome Staff!</strong><br />
+                You are responsible for reviewing and updating farmer queries.
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="staff-stats">
+
+                <div class="staff-stat-box">
+                    <a asp-page="/Staff/ManageQueries" class="btn btn-primary btn-lg btn-block">
+                        View All Queries
+                    </a>
+                </div>
+
+                <div class="staff-stat-box">
+                    <a asp-page="/Staff/ManageQueries" class="btn btn-success btn-lg btn-block">
+                        View Pending Queries
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= TABLE BOX ================= -->
+        <div class="staff-table-box">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Farmer Name</th>
+                            <th>Issue Title</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Ramesh Kumar</td>
+                            <td>Wheat Leaf Infection</td>
+                            <td>12 Feb 2026</td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                            <td>
+                                <a asp-page="/Staff/ManageQueries" class="btn btn-sm btn-info">
+                                    Process
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Palki Sharma</td>
+                            <td>Low Rice Yield</td>
+                            <td>10 Feb 2026</td>
+                            <td><span class="badge badge-success">Resolved</span></td>
+                            <td>
+                                <a asp-page="/Staff/ManageQueries" class="btn btn-sm btn-secondary">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

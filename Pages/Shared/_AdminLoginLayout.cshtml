@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('/admin/assets/img/adminloginbg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .login-container {
+            width: 100%; /* Take full width of the screen */
+            max-width: 1000px; /* Optional limit */
+            display: flex;
+            justify-content: center;
+        }
+
+        .login-card {
+            background-color: #f3e8ff;
+            border-radius: 18px;
+            padding: 60px 50px;
+            width: 100%; /* Take all container width */
+            max-width: 400px; /* Slightly wider than before */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+      
+
+            /* ✅ Title bold + attractive color */
+            .login-card h3 {
+                margin-bottom: 30px;
+                text-align: center;
+                font-weight: 800;
+                font-size: 28px;
+                color: #6a1b9a; /* Attractive purple */
+                letter-spacing: 1px;
+            }
+
+            .login-card label {
+                font-weight: 500;
+                color: #4a148c;
+            }
+
+            .login-card p {
+                margin-top: 10px;
+            }
+
+            /* ✅ Button better style */
+            .login-card .btn-primary {
+                background-color: #8e24aa;
+                border: none;
+                transition: 0.3s ease;
+            }
+
+                .login-card .btn-primary:hover {
+                    background-color: #6a1b9a;
+                    transform: translateY(-2px);
+                }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        @RenderBody()
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

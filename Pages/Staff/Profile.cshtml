@@ -1,0 +1,61 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Staff.ProfileModel
+@{
+    Layout = "_StaffLayout";
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+        <h4 class="text-center fw-bold"
+            style="color:#6B2C3E; font-size:26px;">
+            My Profile
+        </h4>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <form method="post">
+
+            <input type="hidden" asp-for="Staff.EmpId" />
+
+            <div class="form-group">
+                <label>First Name</label>
+                <input asp-for="Staff.FirstName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input asp-for="Staff.LastName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <input asp-for="Staff.Gender" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Mobile No</label>
+                <input asp-for="Staff.MobileNo" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input asp-for="Staff.Email" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <input asp-for="Staff.Address" class="form-control" />
+            </div>
+
+           
+
+        </form>
+
+    </div>
+</div>

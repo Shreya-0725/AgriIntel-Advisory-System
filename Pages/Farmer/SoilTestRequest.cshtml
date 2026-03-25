@@ -1,0 +1,115 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Farmer.SoilTestRequestModel
+@{
+    Layout = "_FarmerLayout";
+}
+
+<div class="content">
+    <div class="container-fluid" style="max-width:800px;">
+
+        <h2 class="text-center">Submit Soil Test Request</h2>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <!-- ================= FORM ================= -->
+
+        <form method="post">
+
+            <div class="form-group mb-3">
+                <label>Soil Type</label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="NewSoilTest.SoilType" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Nutrient</label>
+                <textarea class="form-control"
+                          asp-for="NewSoilTest.Nutrient"></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Acidity</label>
+                <input type="text"
+                       class="form-control"
+                       asp-for="NewSoilTest.Acidity" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label>pH Level</label>
+                <input type="number"
+                       step="0.01"
+                       class="form-control"
+                       asp-for="NewSoilTest.PhLevel" />
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                Submit Soil Test
+            </button>
+
+        </form>
+
+        <hr />
+
+        <!-- ================= HISTORY ================= -->
+
+        <h5>Previous Soil Tests</h5>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Test ID</th>
+                    <th>Farmer ID</th>
+                    <th>Soil Type</th>
+                    <th>Nutrient</th>
+                    <th>Acidity</th>
+                    <th>pH</th>
+                    <th>Health Card No</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var test in Model.MySoilTests)
+                {
+                    <tr>
+                        <td>@test.TestId</td>
+                        <td>@test.FarmerId</td>
+                        <td>@test.SoilType</td>
+                        <td>@test.Nutrient</td>
+                        <td>@test.Acidity</td>
+                        <td>@test.PhLevel</td>
+                        <td>@test.HealthCardNo</td>
+                        <td>
+                            @if (test.Status == "Completed")
+                            {
+                                <span class="badge bg-success">Completed</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning">Pending</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script>
+    setTimeout(function () {
+        var alertBox = document.getElementById("successAlert");
+        if (alertBox) {
+            alertBox.style.transition = "opacity 0.5s";
+            alertBox.style.opacity = "0";
+            setTimeout(() => alertBox.remove(), 500);
+        }
+    }, 3000); // 3 seconds
+</script>

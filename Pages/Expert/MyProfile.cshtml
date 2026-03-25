@@ -1,0 +1,69 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Expert.MyProfileModel
+@{
+    Layout = "_ExpertLayout";
+}
+
+<div class="container" style="max-width:700px; margin-top:80px;">
+
+    <!-- ===== Visible + Bold + Dark Brown Heading ===== -->
+    <h1 class="text-center fw-bold"
+        style="color:#4A2C14; font-size:42px; margin-bottom:20px;">
+        My Profile
+    </h1>
+
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <form method="post">
+
+        <input type="hidden" asp-for="Expert.ExpertId" />
+
+        <div class="mb-2">
+            <label>First Name</label>
+            <input asp-for="Expert.FirstName" class="form-control" />
+        </div>
+
+        <div class="mb-2">
+            <label>Last Name</label>
+            <input asp-for="Expert.LastName" class="form-control" />
+        </div>
+
+        <div class="mb-2">
+            <label>Mobile</label>
+            <input asp-for="Expert.MobileNo" class="form-control" />
+        </div>
+
+        <div class="mb-2">
+            <label>Email</label>
+            <input asp-for="Expert.Email" class="form-control" />
+        </div>
+
+        <div class="mb-2">
+            <label>State Code</label>
+            <input asp-for="Expert.StateCode" class="form-control" />
+        </div>
+
+        <div class="mb-2">
+            <label>District Code</label>
+            <input asp-for="Expert.DistrictCode" class="form-control" />
+        </div>
+
+        <div class="mb-2">
+            <label>Expert In</label>
+            <input asp-for="Expert.ExpertIn" class="form-control" />
+        </div>
+
+        <div class="mb-2">
+            <label>Aadhar No</label>
+            <input asp-for="Expert.AadharNo" class="form-control" />
+        </div>
+
+    </form>
+
+</div>

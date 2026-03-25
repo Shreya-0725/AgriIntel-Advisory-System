@@ -1,0 +1,130 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Admin.ManageFarmersModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Manage Farmers";
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <h2 class="page-title">Manage Farmers</h2>
+
+            <!-- MESSAGE ALERT -->
+            @if (!string.IsNullOrEmpty(Model.Message))
+            {
+                <div class="alert @Model.MessageClass" id="msgAlert">
+                    @Model.Message
+                </div>
+                <script>
+                    setTimeout(function () {
+                        var msg = document.getElementById("msgAlert");
+                        if (msg) {
+                            msg.style.transition = "opacity 0.5s ease";
+                            msg.style.opacity = "0";
+                            setTimeout(function () { msg.remove(); }, 500);
+                        }
+                    }, 3000);
+                </script>
+            }
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Farmer ID</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>State</th>
+                        <th>District</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var farmer in Model.Farmers)
+                    {
+                        <tr>
+                            <td>@farmer.FarmerId</td>
+                            <td>@farmer.FirstName @farmer.LastName</td>
+                            <td>@farmer.MobileNo</td>
+                            <td>@farmer.State?.StateName</td>
+                            <td>@farmer.District?.DistrictName</td>
+                            <td>
+                                <!-- View Details -->
+                                <form method="get" class="d-inline">
+                                    <input type="hidden" name="SelectedFarmerId" value="@farmer.FarmerId" />
+                                    <button class="btn btn-sm btn-info">View Details</button>
+                                </form>
+
+                                <!-- Delete Farmer -->
+                                <form method="post" asp-page-handler="Delete" class="d-inline" onsubmit="return confirm('Are you sure?');">
+                                    <input type="hidden" name="FarmerId" value="@farmer.FarmerId" />
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Selected Farmer Details -->
+            @if (Model.SelectedFarmer != null)
+            {
+                <div class="mt-4 p-3 bg-light border rounded">
+                    <h4>Farmer Details: @Model.SelectedFarmer.FirstName @Model.SelectedFarmer.LastName</h4>
+                    <p><strong>Mobile:</strong> @Model.SelectedFarmer.MobileNo</p>
+                    <p><strong>State:</strong> @Model.SelectedFarmer.State?.StateName</p>
+                    <p><strong>District:</strong> @Model.SelectedFarmer.District?.DistrictName</p>
+
+                    <h5>Queries</h5>
+                    @if (Model.SelectedQueries.Any())
+                    {
+                        <ul>
+                            @foreach (var q in Model.SelectedQueries)
+                            {
+                                <li><strong>@q.Title</strong>: @q.Description</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>No queries submitted.</p>
+                    }
+
+                    <h5>Soil Tests</h5>
+                    @if (Model.SelectedSoilTests.Any())
+                    {
+                        <ul>
+                            @foreach (var s in Model.SelectedSoilTests)
+                            {
+                                <li>
+                                    <strong>@s.SoilType</strong>
+                                    - Status: @s.Status
+                                    - Applied on: @s.ApplicationDate.ToString("dd-MM-yyyy")
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>No soil tests submitted.</p>
+                    }
+
+                    <h5>Expert Advices</h5>
+                    @if (Model.SelectedExpertAdvices.Any())
+                    {
+                        <ul>
+                            @foreach (var e in Model.SelectedExpertAdvices)
+                            {
+                                <li><strong>@e.Advice</strong> - Expert: @e.Expert?.FirstName @e.Expert?.LastName</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>No expert advices requested.</p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

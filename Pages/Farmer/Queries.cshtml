@@ -1,0 +1,72 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Farmer.QueriesModel
+@{
+    Layout = "_FarmerLayout";
+}
+
+<div class="content" style="margin-left:0 !important; padding-left:0 !important;">
+    <div class="container-fluid" style="margin:0 auto; padding:0; max-width:800px;">
+
+        <div class="breadcrumb mt-2">
+            <a asp-page="/Farmer/FarmDashboard">Dashboard</a> / Query
+        </div>
+
+        <h2 class="page-title text-center">Ask a Query</h2>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div id="successAlert" class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <form method="post">
+            <div class="form-group mb-3">
+                <label for="Title">Title</label>
+                <input type="text" class="form-control" id="Title" asp-for="NewQuery.Title" placeholder="Enter title" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Description">Description</label>
+                <textarea class="form-control" id="Description" asp-for="NewQuery.Description" rows="5" placeholder="Describe your issue"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Query</button>
+        </form>
+
+        <hr />
+
+        <h5 class="mt-4">My Previous Queries</h5>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var query in Model.MyQueries)
+                {
+                    <tr>
+                        <td>@query.Title</td>
+                        <td>@query.Description</td>
+                        <td>@query.Status</td>
+                        <td>@query.Solution</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    setTimeout(function () {
+        var alertBox = document.getElementById("successAlert");
+        if (alertBox) {
+            alertBox.style.transition = "opacity 0.5s";
+            alertBox.style.opacity = "0";
+            setTimeout(() => alertBox.remove(), 500);
+        }
+    }, 3000); // 3 seconds
+</script>

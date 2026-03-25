@@ -1,0 +1,70 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Admin.ManageExpertsModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Manage Experts";
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <h2 class="page-title">Manage Experts</h2>
+
+            <!-- MESSAGE -->
+            @if (!string.IsNullOrEmpty(Model.Message))
+            {
+                <div class="alert alert-info" id="msgAlert">
+                    @Model.Message
+                </div>
+
+                <script>
+                    setTimeout(function () {
+                        var msg = document.getElementById("msgAlert");
+                        if (msg) {
+                            msg.style.transition = "opacity 0.5s ease";
+                            msg.style.opacity = "0";
+                            setTimeout(function () {
+                                msg.remove();
+                            }, 500);
+                        }
+                    }, 3000);
+                </script>
+            }
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Expert ID</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Expert In</th>
+                        <th>State</th>
+                        <th>District</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var expert in Model.Experts)
+                    {
+                        <tr id="row-@expert.ExpertId">
+                            <td>@expert.ExpertId</td>
+                            <td>@expert.FirstName @expert.LastName</td>
+                            <td>@expert.MobileNo</td>
+                            <td>@expert.Email</td>
+                            <td>@expert.ExpertIn</td>
+                            <td>@expert.State?.StateName</td>
+                            <td>@expert.District?.DistrictName</td>
+                            <td>
+                                <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Are you sure?');">
+                                    <input type="hidden" name="ExpertId" value="@expert.ExpertId" />
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,139 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Expert.GiveExpertAdviceModel
+@{
+    Layout = "_ExpertLayout";
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+        <!-- ================= MAIN HEADING ================= -->
+        <h1 class="text-center fw-bold "
+            style="color:#4A2C14; font-size:42px;">
+            Manage Expert Advice Requests
+        </h1>
+       
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div id="successAlert" class="alert alert-success text-center fw-bold">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <!-- ================= PENDING REQUESTS (Sub Heading) ================= -->
+
+        <h5 class="mt-4 fw-bold"
+            style="color:#7B4B2A; border-bottom:3px solid #7B4B2A; padding-bottom:5px;">
+            Pending Requests
+        </h5>
+
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Farmer Id</th>
+                    <th>Subject</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.PendingRequests)
+                {
+                    <tr>
+                        <td>@item.FarmerId</td>
+                        <td>@item.Subject</td>
+                        <td>@item.AdviceType</td>
+                        <td>@item.Description</td>
+
+                        <td>
+                            <button class="btn btn-success btn-sm"
+                                    onclick="showForm(@item.AdviceId)">
+                                Give Solution
+                            </button>
+
+                            <div id="form-@item.AdviceId"
+                                 style="display:none; margin-top:10px;">
+
+                                <form method="post">
+                                    <input type="hidden"
+                                           name="AdviceId"
+                                           value="@item.AdviceId" />
+
+                                    <textarea name="SolutionText"
+                                          class="form-control mb-2"
+                                          placeholder="Enter solution..."
+                                          required></textarea>
+
+                                    <button type="submit"
+                                            class="btn btn-primary btn-sm">
+                                        Submit
+                                    </button>
+                                </form>
+
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+        <!-- ================= RESOLVED HISTORY (Sub Heading) ================= -->
+
+        
+        <h5 class="mt-4 fw-bold"
+            style="color:#2E8B57; border-bottom:3px solid #2E8B57; padding-bottom:5px;">
+            Resolved History
+        </h5>
+
+        <table class="table table-bordered table-hover">
+            <thead class="table-success">
+                <tr>
+                    <th>Farmer</th>
+                    <th>Subject</th>
+                    <th>Solution</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.ResolvedRequests)
+                {
+                    <tr class="table-light">
+                        <td>@item.FarmerId</td>
+                        <td>@item.Subject</td>
+                        <td>@item.Advice</td>
+                        <td>
+                            <span class="badge bg-success">
+                                @item.Status
+                            </span>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script>
+
+    function showForm(id) {
+        var form = document.getElementById("form-" + id);
+        form.style.display = (form.style.display === "none") ? "block" : "none";
+    }
+
+    setTimeout(function () {
+        var alertBox = document.getElementById("successAlert");
+        if (alertBox) {
+            alertBox.style.opacity = "0";
+            setTimeout(() => alertBox.remove(), 500);
+        }
+    }, 3000);
+
+</script>

@@ -1,0 +1,151 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Expert.ManageSoilTestModel
+@{
+    Layout = "_ExpertLayout";
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+        <!-- ================= MAIN HEADING ================= -->
+        <h1 class="text-center fw-bold"
+            style="color:#4A2C14; font-size:42px; margin-bottom:20px;">
+            Manage Soil Test Requests
+        </h1>
+
+
+  
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div id="successAlert" class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <!-- ================= PENDING (Sub Heading) ================= -->
+
+        <h5 class="mt-4 fw-bold"
+            style="color:#7B4B2A; font-size:20px;">
+            Pending Requests
+        </h5>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Test ID</th>
+                    <th>Farmer</th>
+                    <th>Soil Type</th>
+                    <th>Nutrient</th>
+                    <th>Acidity</th>
+                    <th>pH</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.PendingTests)
+                {
+                    <tr>
+                        <td>@item.TestId</td>
+                        <td>@item.FarmerId</td>
+                        <td>@item.SoilType</td>
+                        <td>@item.Nutrient</td>
+                        <td>@item.Acidity</td>
+                        <td>@item.PhLevel</td>
+
+                        <td>
+
+                            <button class="btn btn-success btn-sm"
+                                    onclick="toggleForm(@item.TestId)">
+                                Update
+                            </button>
+
+                            <!-- Inline Form -->
+                            <div id="form-@item.TestId"
+                                 style="display:none; margin-top:10px;">
+
+                                <form method="post">
+                                    <input type="hidden"
+                                           name="TestId"
+                                           value="@item.TestId" />
+
+                                    <input type="text"
+                                           name="HealthCardNo"
+                                           class="form-control mb-2"
+                                           placeholder="Enter Health Card No"
+                                           required />
+
+                                    <button type="submit"
+                                            class="btn btn-primary btn-sm">
+                                        Submit
+                                    </button>
+                                </form>
+
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+        <!-- ================= HISTORY (Sub Heading) ================= -->
+
+        <h5 class="mt-5 fw-bold"
+            style="color:#9C5A3C; font-size:20px;">
+            Completed History
+        </h5>
+
+        <table class="table table-success table-bordered">
+            <thead>
+                <tr>
+                    <th>Test ID</th>
+                    <th>Farmer</th>
+                    <th>Health Card</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.CompletedTests)
+                {
+                    <tr>
+                        <td>@item.TestId</td>
+                        <td>@item.FarmerId</td>
+                        <td>@item.HealthCardNo</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script>
+
+    function toggleForm(id) {
+
+        var form = document.getElementById("form-" + id);
+
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        }
+        else {
+            form.style.display = "none";
+        }
+    }
+
+    // Auto hide message
+    setTimeout(function () {
+        var alertBox = document.getElementById("successAlert");
+
+        if (alertBox) {
+            alertBox.style.opacity = "0";
+            setTimeout(() => alertBox.remove(), 500);
+        }
+    }, 3000);
+
+</script>

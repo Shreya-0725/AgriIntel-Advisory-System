@@ -1,0 +1,106 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Farmer.FarmDashboardModel
+@{
+    Layout = "_kisankendraLayout";
+}
+
+<div class="content" style="margin-left:0 !important; padding-left:0 !important;">
+    <div class="container-fluid" style="margin:0 auto; padding:0; max-width:900px;">
+        <h4 class="page-title text-center">Kisan Kendra Dashboard</h4>
+
+        <div class="row dashboard-cards" style="justify-content:center;">
+
+            <div class="col-md-6">
+                <div class="card card-stats card-primary">
+                    <div class="card-body text-center">
+                        <p class="card-category">Total Registered Farmers</p>
+                        <h4 class="card-title">25</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <a asp-page="/Home/Registration" class="text-decoration-none">
+                    <div class="card card-stats card-success">
+                        <div class="card-body text-center">
+                            <p class="card-category">Register New Farmer</p>
+                            <h4 class="card-title">Add Farmer</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 mt-3">
+                <a asp-page ="/kisankendra/FarmerDetails" class="text-decoration-none">
+                    <div class="card card-stats card-warning">
+                        <div class="card-body text-center">
+                            <p class="card-category">View Farmer Details</p>
+                            <h4 class="card-title">View List</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- KK Info Section -->
+        <div class="row mt-4">
+
+            <!-- KK 1 -->
+            <div class="col-md-6 mb-4">
+                <a asp-page="/KisanKendra/KKProfile"
+                   class="card text-center p-3 text-decoration-none d-block">
+                    <h5><strong>Kisan Kendra 1</strong></h5>
+                    <p><strong>KK ID:</strong> KK001</p>
+                    <p><strong>State:</strong> Gujarat</p>
+                    <p><strong>District:</strong> Rajkot</p>
+                    <p><strong>Total Farmers:</strong> 25</p>
+                </a>
+            </div>
+
+            <!-- KK 2 -->
+            <div class="col-md-6 mb-4">
+                <a asp-page="/KisanKendra/KKProfile"
+                   class="card text-center p-3 text-decoration-none d-block">
+                    <h5><strong>Kisan Kendra 2</strong></h5>
+                    <p><strong>KK ID:</strong> KK002</p>
+                    <p><strong>State:</strong> Maharashtra</p>
+                    <p><strong>District:</strong> Nashik</p>
+                    <p><strong>Total Farmers:</strong> 18</p>
+                </a>
+            </div>
+
+            <!-- KK 3 -->
+            <div class="col-md-6 mb-4">
+                <a asp-page="/KisanKendra/KKProfile"
+                   class="card text-center p-3 text-decoration-none d-block">
+                    <h5><strong>Kisan Kendra 3</strong></h5>
+                    <p><strong>KK ID:</strong> KK003</p>
+                    <p><strong>State:</strong> Rajasthan</p>
+                    <p><strong>District:</strong> Jaipur</p>
+                    <p><strong>Total Farmers:</strong> 30</p>
+                </a>
+            </div>
+
+            <!-- KK 4 -->
+            <div class="col-md-6 mb-4">
+                <a asp-page="/KisanKendra/KKProfile"
+                   class="card text-center p-3 text-decoration-none d-block">
+                    <h5><strong>Kisan Kendra 4</strong></h5>
+                    <p><strong>KK ID:</strong> KK004</p>
+                    <p><strong>State:</strong> Madhya Pradesh</p>
+                    <p><strong>District:</strong> Indore</p>
+                    <p><strong>Total Farmers:</strong> 22</p>
+                </a>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+                         

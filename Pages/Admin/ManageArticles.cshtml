@@ -1,0 +1,91 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Admin.ManageArticlesModel
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="main-content" style="margin-left:260px; padding:20px;">
+
+    <!-- ✅ Fixed Heading -->
+    <div style="padding-top:50px; text-align:center;">
+        <h2 style="font-weight:bold; color:black; margin:0;">
+            Manage Articles
+        </h2>
+    </div>
+
+    <!-- ✅ MESSAGE MOVED HERE (INSIDE MAIN CONTENT) -->
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="alert alert-success" id="msgAlert">
+            @Model.Message
+        </div>
+
+        <script>
+            setTimeout(function () {
+                var msg = document.getElementById("msgAlert");
+                if (msg) {
+                    msg.style.transition = "opacity 0.5s ease";
+                    msg.style.opacity = "0";
+                    setTimeout(function () {
+                        msg.remove();
+                    }, 500);
+                }
+            }, 3000);
+        </script>
+    }
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Articles)
+            {
+                <tr>
+                    <td>@item.ArticleId</td>
+                    <td>@item.TitleEnglish</td>
+
+                    <td>
+                        <img src="@item.ImagePath" width="80" />
+                    </td>
+
+                    <td>
+                        <form method="post"
+                              asp-page-handler="Approve"
+                              asp-route-id="@item.ArticleId"
+                              style="display:inline">
+                            <button class="btn btn-success btn-sm">
+                                Approve
+                            </button>
+                        </form>
+
+                        <form method="post"
+                              asp-page-handler="Reject"
+                              asp-route-id="@item.ArticleId"
+                              style="display:inline">
+                            <button class="btn btn-warning btn-sm">
+                                Reject
+                            </button>
+                        </form>
+
+                        <form method="post"
+                              asp-page-handler="Delete"
+                              asp-route-id="@item.ArticleId"
+                              style="display:inline">
+                            <button class="btn btn-danger btn-sm">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

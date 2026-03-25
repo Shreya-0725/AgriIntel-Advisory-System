@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>AgriIntel Advisory System</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	<link rel="stylesheet" href="~/admin/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+	<link rel="stylesheet" href="~/admin/assets/css/ready.css">
+	<link rel="stylesheet" href="~/admin/assets/css/demo.css">
+	<link rel="stylesheet" href="~/admin/assets/css/farmer.css" asp-append-version="true" />
+
+
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<div class="logo-header">
+				<a asp-page="/Farmer/FarmDashboard" class="logo text-white font-weight-bold">
+					Farmer Panel
+				</a>
+
+				<button class="navbar-toggler sidenav-toggler ml-auto"
+						type="button"
+						data-toggle="collapse"
+						data-target="collapse"
+						aria-controls="sidebar"
+						aria-expanded="false"
+						aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+				</button>
+
+				<button class="topbar-toggler more">
+					<i class="la la-ellipsis-v" style="color:#FFFFFF; font-size:18px;"></i>
+				</button>
+			</div>
+
+				
+
+			<!-- HEADER / NAVBAR -->
+			<nav class="navbar navbar-header navbar-expand-lg" style="background-color: #66BB6A; height: 55px;">
+				<div class="container-fluid d-flex justify-content-end">
+
+					<!-- SETTINGS DROPDOWN -->
+					<ul class="navbar-nav topbar-nav align-items-center">
+						<li class="nav-item dropdown">
+							<a class="nav-link text-white font-weight-bold"
+							   href="#"
+							   id="settingsDropdown"
+							   role="button"
+							   data-toggle="dropdown"
+							   aria-haspopup="true"
+							   aria-expanded="false">
+								<i class="la la-cog mr-1"></i> Settings
+							</a>
+
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li>
+									<a class="dropdown-item" asp-page="/Farmer/MyProfile">
+										<i class="la la-user mr-2"></i> My Profile
+									</a>
+								</li>
+								<li><hr class="dropdown-divider"></li>
+								<li>
+									<a class="dropdown-item" asp-page="/Home/Login" asp-page-handler="Logout">
+										<i class="la la-power-off mr-2"></i> Logout
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+				</div>
+			</nav>
+
+
+
+		</div>
+		<div class="sidebar">
+			<div class="scrollbar-inner sidebar-wrapper">
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<a class="sidebar-link" asp-page="/Farmer/FarmDashboard">
+							Dashboard
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="sidebar-link" asp-page="/Farmer/MyProfile">My Profile</a>
+					</li>
+					<li class="nav-item">
+						<a class="sidebar-link" asp-page="/Farmer/Queries">Queries</a>
+					</li>
+					<li class="nav-item">
+						<a class="sidebar-link" asp-page="/Farmer/SoilTestRequest">Soil Test Request</a>
+					</li>
+					<li class="nav-item">
+						<a class="sidebar-link" asp-page="/Home/Article">Articles</a>
+					</li>
+					<li class="nav-item">
+						<a class="sidebar-link" asp-page="/Farmer/ExpertAdvices">Get Expert Advices</a>
+					</li>
+					<li class="nav-item">
+						<a class="sidebar-link" data-toggle="collapse" href="#govtMenu" role="button">
+							Government Schemes ▾
+						</a>
+						<div class="collapse" id="govtMenu">
+							<ul class="nav flex-column ms-3">
+								<li class="nav-item">
+									<a class="sidebar-link" href="https://pmfby.gov.in/" target="_blank">Crop Insurance (PMFBY)</a>
+								</li>
+								<li class="nav-item">
+									<a class="sidebar-link" href="https://pmkisan.gov.in/" target="_blank">PM Kisan Samman Nidhi</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item mt-3">
+						<a class="sidebar-link logout-link" asp-page="/Home/Login" asp-page-handler="Logout">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- PAGE CONTENT -->
+		<div class="main-panel">
+			@RenderBody()
+		</div>
+
+	
+		<!-- FOOTER -->
+		<footer class="footer py-3">
+			<div class="container-fluid d-flex justify-content-end align-items-center">
+				<span>&copy; 2026 AGRIINTEL ADVISORY ADMIN PANEL</span>
+			</div>
+		</footer>
+
+
+	</div>
+
+
+
+
+	
+</body>
+</html>
+
+<script src="~/admin/assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="~/admin/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="~/admin/assets/js/core/popper.min.js"></script>
+<script src="~/admin/assets/js/core/bootstrap.min.js"></script>
+<script src="~/admin/assets/js/plugin/chartist/chartist.min.js"></script>
+<script src="~/admin/assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
+<script src="~/admin/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="~/admin/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<script src="~/admin/assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="~/admin/assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
+<script src="~/admin/assets/js/plugin/chart-circle/circles.min.js"></script>
+<script src="~/admin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="~/admin/assets/js/ready.min.js"></script>
+<script src="~/admin/assets/js/demo.js"></script>

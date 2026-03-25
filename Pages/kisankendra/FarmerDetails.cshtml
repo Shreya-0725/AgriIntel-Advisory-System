@@ -1,0 +1,53 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.kisankendra.FarmerDetailsModel
+@{
+    Layout = "_kisankendraLayout";
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+        <h3 class="text-center mb-4">Registered Farmers</h3>
+
+        @if (Model.Farmers != null && Model.Farmers.Count > 0)
+        {
+            <div class="card p-3 shadow">
+
+                <table class="table table-bordered table-hover text-center">
+                    <thead style="background-color:#0f3d2e;">
+                        <tr>
+                            <th style="color:white; font-weight:700;">Farmer ID</th>
+                            <th style="color:white; font-weight:700;">Name</th>
+                            <th style="color:white; font-weight:700;">Mobile</th>
+                            <th style="color:white; font-weight:700;">State</th>
+                            <th style="color:white; font-weight:700;">District</th>
+                            <th style="color:white; font-weight:700;">Village</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var f in Model.Farmers)
+                        {
+                            <tr>
+                                <td>@f.FarmerId</td>
+                                <td>@f.FirstName @f.LastName</td>
+                                <td>@f.MobileNo</td>
+                                <td>@f.StateCode</td>
+                                <td>@f.DistrictCode</td>
+                                <td>@f.VillageCode</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning text-center">
+                No Farmers Registered Yet
+            </div>
+        }
+
+    </div>
+</div>

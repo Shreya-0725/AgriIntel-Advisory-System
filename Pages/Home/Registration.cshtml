@@ -1,0 +1,611 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Home.RegistrationModel
+@{
+    Layout = "_Layout";
+}
+
+<style>
+
+    body {
+        background: #aabbb3;
+        background-image: url('/assets/img/registerpage.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    /* ================= BALANCED PAGE HEIGHT ================= */
+
+    .register-page-wrapper {
+        padding: 40px 20px;
+        min-height: 40vh;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* ================= FORM CARD ================= */
+
+    .role-box {
+        max-width: 1100px;
+        margin: 30px auto;
+        background: #dce6e1;
+        border-radius: 18px;
+        padding: 30px;
+        border: 1px solid #bfcfca;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    /* ================= TITLE ================= */
+
+    .title-wrapper {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .form-title {
+        background: #0f3d2e;
+        color: white;
+        padding: 10px 15px;
+        font-size: 22px;
+        font-weight: 800;
+        border-radius: 8px;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* ================= GRID ================= */
+
+    .row-field {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-bottom: 25px;
+    }
+
+    .field-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section-title {
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .field-block input,
+    .field-block select {
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    button {
+        height: 45px;
+        font-weight: 600;
+        border-radius: 6px;
+    }
+
+
+</style>
+
+
+<div class="register-page-wrapper">
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div id="successMsg" class="alert alert-success text-center fw-bold">
+            @TempData["SuccessMessage"]
+        </div>
+
+        <script>
+            setTimeout(function () {
+                var msg = document.getElementById("successMsg");
+                if (msg) {
+                    msg.remove();
+                }
+            }, 3000); // ⏱ 3 seconds
+        </script>
+    }
+
+    <!-- ================= ROLE SELECT ================= -->
+   
+    <select class="form-control mt-4 mb-4"
+            id="roleSelect"
+            onchange="showForm()">
+
+        <option value="">-- Select Role --</option>
+        <option value="farmer">Farmer</option>
+        <option value="expert">Expert</option>
+        <option value="staff">Staff</option>
+        <option value="kendra">Kisan Kendra</option>
+
+    </select>
+
+    <!-- ======================================================= -->
+    <!-- ================= FARMER ============================== -->
+    <!-- ======================================================= -->
+
+    <div id="farmerForm" style="display:none;">
+        <div class="role-box">
+
+            <div class="title-wrapper">
+                <div class="form-title">Farmer Registration</div>
+            </div>
+
+            <form method="post" asp-page-handler="Farmer">
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">First Name</div>
+                        <input asp-for="Farmer.FirstName" class="form-control" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Last Name</div>
+                        <input asp-for="Farmer.LastName" class="form-control" required />
+                    </div>
+
+                </div>
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Mobile</div>
+                        <input asp-for="Farmer.MobileNo" type="text" class="form-control" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Password</div>
+                        <input asp-for="Farmer.Password" type="text" class="form-control" id="farmerPassword"
+                               name="farmerPassword" required />
+                    </div>
+                  
+                    <div class="field-block">
+                        <div class="section-title">Confirm Password</div>
+                        <input asp-for="Farmer.ConfirmPassword" type="text" class="form-control" id="farmerConfirmPassword"
+                               name="farmerConfirmPassword" required />
+                        <span asp-validation-for="Farmer.ConfirmPassword" class="text-danger"></span>
+                        <p id="farmerErrorMessage" style="color:red;"></p>
+                    </div>
+
+                   
+
+                </div>
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">State</div>
+                        <select asp-for="Farmer.StateCode" 
+                                asp-items="Model.StateList"
+                                class="form-control" required>
+                            <option value="">-- Select State --</option>
+                        </select>
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">District</div>
+                        <select asp-for="Farmer.DistrictCode"
+                                asp-items="Model.DistrictList"
+                                class="form-control" required>
+                            <option value="">-- Select District --</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Village</div>
+                        <select asp-for="Farmer.VillageCode"
+                                asp-items="Model.VillageList" 
+                                class="form-control" required>
+                            <option value="">-- Select Village --</option>
+                        </select>
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">PIN Code</div>
+                        <input asp-for="Farmer.PINCode" type="text" maxlength="10" class="form-control" required />
+                    </div>
+
+                </div>
+
+                <!-- 🔥 NEW FIELDS ADDED -->
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Address</div>
+                        <input asp-for="Farmer.Address" class="form-control" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Aadhar No</div>
+                        <input asp-for="Farmer.AadharNo" type="text" maxlength="12" class="form-control" required />
+                    </div>
+
+                </div>
+
+                <button class="btn btn-success w-100">
+                    Register Farmer
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ======================================================= -->
+    <!-- ================= EXPERT ============================== -->
+    <!-- ======================================================= -->
+
+    <div id="expertForm" style="display:none;">
+        <div class="role-box">
+
+            <div class="title-wrapper">
+                <div class="form-title">Expert Registration</div>
+            </div>
+
+            <form method="post" asp-page-handler="Expert">
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">First Name</div>
+                        <input asp-for="Expert.FirstName" class="form-control" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Last Name</div>
+                        <input asp-for="Expert.LastName" class="form-control" required />
+                    </div>
+
+                </div>
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">State</div>
+                        <select asp-for="Expert.StateCode"
+                                asp-items="Model.StateList"
+                                class="form-control" required>
+                            <option value="">-- Select State --</option>
+                        </select>
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">District</div>
+                        <select asp-for="Expert.DistrictCode"
+                                asp-items="Model.DistrictList"
+                                class="form-control" required>
+                            <option value="">-- Select District --</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Gender</div>
+                        <select asp-for="Expert.Gender" required class="form-control">
+                            <option value="">-- Select Gender --</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Mobile</div>
+                        <input asp-for="Expert.MobileNo" type="text" class="form-control" required />
+                    </div>
+
+                </div>
+
+                <!-- 🔥 NEW EXPERT FIELDS -->
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Expert In</div>
+                        <input asp-for="Expert.ExpertIn" class="form-control" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Aadhar No</div>
+                        <input asp-for="Expert.AadharNo" type="text" maxlength="12" class="form-control" required />
+                    </div>
+
+                </div>
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Email</div>
+                        <input asp-for="Expert.Email" class="form-control" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Password</div>
+                        <input asp-for="Expert.Password" type="text" class="form-control" id="expertPassword" name="expertPassword" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Confirm Password</div>
+                        <input asp-for="Expert.ConfirmPassword" type="text" class="form-control" id="expertConfirmPassword"
+                               name="expertConfirmPassword" required />
+                        <span asp-validation-for="Expert.ConfirmPassword" class="text-danger"></span>
+                        <p id="expertErrorMessage" style="color:red;"></p>
+                    </div>
+
+                </div>
+
+                <button class="btn btn-success w-100">
+                    Register Expert
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ======================================================= -->
+    <!-- ================= STAFF =============================== -->
+    <!-- ======================================================= -->
+
+    <div id="staffForm" style="display:none;">
+        <div class="role-box">
+
+            <div class="title-wrapper">
+                <div class="form-title">Staff Registration</div>
+            </div>
+
+            <form method="post" asp-page-handler="Staff">
+
+                <div class="row-field">
+
+
+                    <div class="field-block">
+                        <div class="section-title">First Name</div>
+                        <input asp-for="Staff.FirstName" class="form-control" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Last Name</div>
+                        <input asp-for="Staff.LastName" class="form-control" required />
+                    </div>
+
+                </div>
+
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Gender</div>
+                        <select asp-for="Staff.Gender" class="form-control" required>
+                            <option value="">-- Select Gender --</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Mobile</div>
+                        <input asp-for="Staff.MobileNo" type="text" class="form-control" required />
+                    </div>
+
+                </div>
+
+                <!-- 🔥 NEW STAFF FIELDS -->
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Email</div>
+                        <input asp-for="Staff.Email" class="form-control" required />
+                    </div>
+
+                 
+                        <div class="field-block">
+                            <div class="section-title">Password</div>
+                        <input asp-for="Staff.Password" type="text" class="form-control" id="staffPassword"
+                               name="staffPassword" required />
+                        </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Confirm Password</div>
+                        <input asp-for="Staff.ConfirmPassword" type="text" class="form-control" id="staffConfirmPassword"
+                               name="staffConfirmPassword" required />
+                        <span asp-validation-for="Staff.ConfirmPassword" class="text-danger"></span>
+                        <p id="staffErrorMessage" style="color:red;"></p>
+                    </div>
+
+                  
+                  
+                 
+
+                </div>
+                <div class="row-field">
+                    <div class="field-block">
+                        <div class="section-title">Address</div>
+                        <input asp-for="Staff.Address" class="form-control" required />
+                    </div>
+                </div>
+
+
+                <button class="btn btn-success w-100">
+                    Register Staff
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ======================================================= -->
+    <!-- ================= KISAN KENDRA ======================== -->
+    <!-- ======================================================= -->
+
+    <div id="kendraForm" style="display:none;">
+        <div class="role-box">
+
+            <div class="title-wrapper">
+                <div class="form-title">Kisan Kendra Registration</div>
+            </div>
+
+            <form method="post" asp-page-handler="Kendra">
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Owner Name</div>
+                        <input asp-for="Kendra.OwnerName" class="form-control" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Password</div>
+                        <input asp-for="Kendra.Password" type="text" class="form-control" id="kendraPassword"
+                               name="kendraPassword" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Confirm Password</div>
+                        <input asp-for="Kendra.ConfirmPassword"
+                               type="text"
+                               class="form-control"
+                               id="kendraConfirmPassword"
+                               name="kendraConfirmPassword"
+                               required />
+                        <span asp-validation-for="Kendra.ConfirmPassword" class="text-danger"></span>
+                        <p id="kendraErrorMessage" style="color:red;"></p>
+                    </div>
+                    
+
+                </div>
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Mobile</div>
+                        <input asp-for="Kendra.MobileNo" type="text" class="form-control" required />
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">State</div>
+                        <select asp-for="Kendra.StateCode"
+                                asp-items="Model.StateList"
+                                class="form-control" required>
+                            <option value="">-- Select State --</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- 🔥 NEW KENDRA FIELDS -->
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">District</div>
+                        <select asp-for="Kendra.DistrictCode"
+                                asp-items="Model.DistrictList"
+                                class="form-control" required>
+                            <option value="">-- Select District --</option>
+                        </select>
+                    </div>
+
+                    <div class="field-block">
+                        <div class="section-title">Village</div>
+                        <select asp-for="Kendra.VillageCode"
+                                asp-items="Model.VillageList"
+                                class="form-control" required>
+                            <option value="">-- Select Village --</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row-field">
+
+                    <div class="field-block">
+                        <div class="section-title">Block</div>
+                        <input asp-for="Kendra.Block" class="form-control" required />
+                    </div>
+
+                </div>
+
+                <button class="btn btn-success w-100">
+                    Register Kisan Kendra
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+    function showForm() {
+        let role = document.getElementById("roleSelect").value;
+
+        document.getElementById("farmerForm").style.display = "none";
+        document.getElementById("expertForm").style.display = "none";
+        document.getElementById("staffForm").style.display = "none";
+        document.getElementById("kendraForm").style.display = "none";
+
+        if (role === "farmer") document.getElementById("farmerForm").style.display = "block";
+        else if (role === "expert") document.getElementById("expertForm").style.display = "block";
+        else if (role === "staff") document.getElementById("staffForm").style.display = "block";
+        else if (role === "kendra") document.getElementById("kendraForm").style.display = "block";
+
+        if (role !== "") {
+            document.getElementById("roleSelect").style.display = "none";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        function addConfirmPasswordValidation(passwordId, confirmId, errorId) {
+            const password = document.getElementById(passwordId);
+            const confirm = document.getElementById(confirmId);
+            const errorMsg = document.getElementById(errorId);
+
+            // Check on form submission
+            confirm.closest("form").addEventListener("submit", function (e) {
+                if (password.value !== confirm.value) {
+                    e.preventDefault();
+                    errorMsg.textContent = "Passwords do not match!";
+                    confirm.focus();
+                }
+            });
+
+            // Check in real-time as user types
+            confirm.addEventListener("input", function () {
+                if (confirm.value === password.value) {
+                    errorMsg.textContent = ""; // Clear error if matches
+                }
+            });
+
+            password.addEventListener("input", function () {
+                if (confirm.value === password.value) {
+                    errorMsg.textContent = ""; // Clear error if matches
+                }
+            });
+        }
+
+        // Apply to all forms
+        addConfirmPasswordValidation("farmerPassword", "farmerConfirmPassword", "farmerErrorMessage");
+        addConfirmPasswordValidation("expertPassword", "expertConfirmPassword", "expertErrorMessage");
+        addConfirmPasswordValidation("staffPassword", "staffConfirmPassword", "staffErrorMessage");
+        addConfirmPasswordValidation("kendraPassword", "kendraConfirmPassword", "kendraErrorMessage");
+
+    });
+</script>

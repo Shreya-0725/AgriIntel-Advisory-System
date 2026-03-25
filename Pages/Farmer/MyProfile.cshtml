@@ -1,0 +1,79 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Farmer.MyProfileModel
+@{
+    Layout = "_FarmerLayout";
+}
+
+<div class="content">
+    <div class="container" style="max-width:750px;">
+
+        <h2 class="text-center mb-4">My Profile</h2>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success text-center">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <form method="post">
+
+            <input type="hidden" asp-for="Farmer.FarmerId" />
+
+
+            <!-- ================= BASIC INFO ================= -->
+
+            <div class="mb-2">
+                <label>First Name</label>
+                <input asp-for="Farmer.FirstName" class="form-control" />
+            </div>
+
+            <div class="mb-2">
+                <label>Last Name</label>
+                <input asp-for="Farmer.LastName" class="form-control" />
+            </div>
+
+            <div class="mb-2">
+                <label>Mobile</label>
+                <input asp-for="Farmer.MobileNo" class="form-control" readonly />
+            </div>
+
+
+            <div class="mb-2">
+                <label>Address</label>
+                <input asp-for="Farmer.Address" class="form-control" />
+            </div>
+
+            <!-- ================= LOCATION ================= -->
+
+            <div class="mb-2">
+                <label>State Code</label>
+                <input asp-for="Farmer.StateCode" class="form-control" />
+            </div>
+
+            <div class="mb-2">
+                <label>District Code</label>
+                <input asp-for="Farmer.DistrictCode" class="form-control" />
+            </div>
+
+            <div class="mb-2">
+                <label>Village Code</label>
+                <input asp-for="Farmer.VillageCode" class="form-control" />
+            </div>
+
+            <div class="mb-2">
+                <label>PIN Code</label>
+                <input asp-for="Farmer.PINCode" class="form-control" />
+            </div>
+
+            <div class="mb-2">
+                <label>Aadhar Number</label>
+                <input asp-for="Farmer.AadharNo" class="form-control" />
+            </div>
+
+         
+
+        </form>
+
+    </div>
+</div>

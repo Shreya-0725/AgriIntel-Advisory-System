@@ -1,0 +1,76 @@
+﻿@page
+@model AgriIntel_Advisory_System.Pages.Farmer.FarmDashboardModel
+@{
+    Layout = "_FarmerLayout";
+}
+
+    <div class="content" style="margin-left:0 !important; padding-left:0 !important;">
+        <div class="container-fluid" style="margin:0 auto; padding:0; max-width:800px;">
+            <h4 class="page-title text-center">Dashboard</h4>
+
+            <div class="row dashboard-cards" style="justify-content:center;">
+                <div class="col-12">
+                    <a asp-page="/Farmer/Queries" class="text-decoration-none">
+                        <div class="card card-stats card-primary">
+                            <div class="card-body text-center">
+                                <p class="card-category">My Queries</p>
+                                <h4 class="card-title">5</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12">
+                    <a asp-page="/Farmer/SoilTestRequest" class="text-decoration-none">
+                        <div class="card card-stats card-success">
+                            <div class="card-body text-center">
+                                <p class="card-category">Soil Test Requests</p>
+                                <h4 class="card-title">2</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12">
+                    <a asp-page="/Home/Article" class="text-decoration-none">
+                        <div class="card card-stats card-warning">
+                            <div class="card-body text-center">
+                                <p class="card-category">Agricultural Articles</p>
+                                <h4 class="card-title">12</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12">
+                    <a href="https://pmfby.gov.in/" target="_blank" class="text-decoration-none">
+                        <div class="card card-stats card-danger">
+                            <div class="card-body text-center">
+                                <p class="card-category">Crop Insurance</p>
+                                <h4 class="card-title">Apply</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row govt-schemes mt-4" style="justify-content:center;">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title text-center">Government Schemes</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <a href="https://pmfby.gov.in/" target="_blank" class="btn btn-warning m-2">
+                                Crop Insurance (PMFBY)
+                            </a>
+                            <a href="https://pmkisan.gov.in/" target="_blank" class="btn btn-success m-2">
+                                PM Kisan Samman Nidhi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

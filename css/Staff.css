@@ -1,0 +1,147 @@
+﻿/* ===============================
+   SIDEBAR - DARK BLUE
+================================= */
+.sidebar {
+    background-color: #0D47A1 !important;
+}
+
+    .sidebar .nav .nav-item a {
+        color: #ffffff !important;
+        font-weight: bold !important;
+    }
+
+        .sidebar .nav .nav-item a:hover {
+            background-color: #1565C0 !important;
+        }
+
+
+/* ===============================
+   LOGO HEADER
+================================= */
+.logo-header {
+    background-color: #0D47A1 !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    height: 55px;
+    line-height: 55px;
+    padding-left: 25px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35) !important;
+}
+
+    .logo-header a.logo {
+        color: #ffffff !important;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+
+
+
+/* ===============================
+   TOP NAVBAR
+================================= */
+.navbar-header {
+    background-color: #42A5F5 !important;
+    height: 55px;
+}
+
+    .navbar-header .nav-link {
+        color: #ffffff !important;
+        font-weight: bold;
+    }
+
+    /* Settings dropdown hover */
+    .navbar-header .dropdown-menu .dropdown-item {
+        color: #0D47A1;
+        font-weight: 500;
+        transition: background 0.3s, color 0.3s;
+    }
+
+        .navbar-header .dropdown-menu .dropdown-item:hover {
+            background-color: #1565C0 !important;
+            color: #ffffff !important;
+        }
+
+
+/* ===============================
+   MAIN PANEL (do not disturb template structure)
+================================= */
+.main-panel {
+    background-color: #E3F2FD !important;
+    min-height: 100vh;
+}
+
+    /* Keep normal padding */
+    .main-panel .content {
+        padding: 60px 30px !important;
+    }
+
+
+/* ===============================
+   CENTERED DASHBOARD BOXES
+================================= */
+.staff-main-box,
+.staff-table-box {
+    width: 70%;
+    max-width: 950px;
+    margin: 40px auto !important;
+    position: relative;
+    left: 10px; /* 👈 shifted RIGHT (adjust 60px / 100px if needed) */
+
+    padding: 40px;
+    background: #F4F8FF;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+
+/* ===============================
+   PAGE TITLE
+================================= */
+.page-title {
+    text-align: center !important;
+    width: 100%;
+    margin: 0 auto 30px auto !important;
+    position: relative;
+    left: -10px; /* 👈 shifted RIGHT same as boxes */
+
+    font-size: 34px !important;
+    font-weight: 800 !important;
+    color: #0D47A1 !important;
+    letter-spacing: 1px;
+}
+
+
+/* welcome text */
+.welcome-text {
+    font-size: 18px;
+    color: #0D47A1;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+
+/* ===============================
+   BUTTON SECTION
+================================= */
+.staff-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+
+/* ===============================
+   FOOTER
+================================= */
+.footer {
+    background-color: #0D47A1 !important;
+    color: #ffffff !important;
+    border-top: 1px solid #08306b;
+}
+
+    .footer span {
+        color: #ffffff !important;
+    }

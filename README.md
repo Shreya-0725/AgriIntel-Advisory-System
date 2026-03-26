@@ -157,7 +157,7 @@ The project follows a **layered architecture**:
 
 ---
 
-### 📊 Future Enhancements
+📊 Future Enhancements
 📱 Mobile app integration
 🤖 AI-based crop recommendation system
 🌦️ Weather API integration
@@ -166,7 +166,6 @@ The project follows a **layered architecture**:
 🌱 IoT-based soil monitoring
 
 ---
-
-###🙌 Acknowledgement
+🙌 Acknowledgement
 
 This system aims to empower farmers by providing accessible agricultural knowledge and expert support, contributing to smarter and more sustainable farming practices.

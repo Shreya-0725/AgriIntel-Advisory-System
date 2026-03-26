@@ -157,14 +157,15 @@ The project follows a **layered architecture**:
 
 ---
 
-📊 Future Enhancements
-📱 Mobile app integration
-🤖 AI-based crop recommendation system
-🌦️ Weather API integration
-🌐 Multi-language support
-💬 Real-time chat with experts
-🌱 IoT-based soil monitoring
+### 📊 Future Enhancements
 
+- 📱 Mobile app integration  
+- 🤖 AI-based crop recommendation system  
+- 🌦️ Weather API integration  
+- 🌐 Multi-language support  
+- 💬 Real-time chat with experts  
+- 🌱 IoT-based soil monitoring
+  
 ---
 🙌 Acknowledgement
 

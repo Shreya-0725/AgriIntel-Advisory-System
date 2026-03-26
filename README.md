@@ -47,6 +47,7 @@ Manage articles and soil test records
 Handle user issues and requests
 
 🧩 System Modules
+
 1. Admin Module
 Dashboard
 Login
@@ -98,6 +99,8 @@ Service Layer – Business logic
 Repository Layer – Database operations
 Interface Layer – Abstraction for services/repositories
 Middleware – Handles HTTP session & security
+
+
 🔐 Security Features
 Role-based access control (Admin, Expert, Farmer, Staff, Kisaan Kendra)
 Middleware for HTTP session validation

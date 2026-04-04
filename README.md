@@ -2,47 +2,43 @@
 
 ## 📌 Overview
 
-**AgriIntel Advisory System** is a web-based agricultural support platform designed to assist farmers with expert guidance, crop management, soil analysis, and access to government schemes.  
+**AgriIntel Advisory System is a multi-user, API-driven web application built using ASP.NET Core that enables seamless interaction between farmers and agricultural experts.
 
-The system bridges the gap between farmers and agricultural experts, enabling efficient and informed farming practices.
+The system is designed with a layered architecture and provides secure, role-based access for different users including Admin, Expert, Farmer, Staff, and Kisaan Kendra.
 
-This project is developed using **C# (.NET) in Visual Studio** with a frontend built using **HTML, CSS, Bootstrap, and JavaScript**.
+It exposes RESTful APIs for handling core functionalities such as query management, expert consultation, soil test requests, and government scheme applications, with JWT-based authentication ensuring secure communication.
+
+The backend is developed using C# (.NET Core), Entity Framework, and SQL Server, while the frontend is built using HTML, CSS, Bootstrap, and JavaScript.**.
 
 ---
 
 ## 🎯 Objectives
 
-- Provide expert advice for crop cultivation  
-- Deliver real-time agricultural consultation  
-- Offer weather-based farming updates  
-- Enable farmers to apply for crop insurance  
-- Support application for PM Kisan Samman Nidhi Yojana  
-- Facilitate soil testing and Soil Health Card generation  
-- Provide a platform for farmers to ask queries freely  
-- Connect farmers with agricultural experts and Kisaan Sewa Kendras  
+- Design and develop a scalable, multi-user web application using ASP.NET Core
+- Implement RESTful APIs to handle core functionalities like query management, consultation, and scheme applications
+- Enable real-time interaction between farmers and experts through structured API endpoints
+- Integrate database-driven modules for soil testing, user management, and application tracking
+- Implement JWT-based authentication and role-based authorization for secure access control
+- Build a system capable of handling multiple user roles and workflows efficiently
+- Ensure clean architecture and separation of concerns using layered design patterns
 
 ---
 
 ## 🚜 Key Features
 
 ### 👨‍🌾 Farmer Services
-- Apply for real-time expert consultation  
-- Submit farming-related queries  
-- Request soil testing and receive Soil Health Card  
-- Access expert articles and farming tips  
-- Apply for:
-  - Crop Insurance (PMFBY)  
-  - PM Kisan Samman Nidhi Scheme  
-- Track application status via Kisaan Kendra  
+- Consumes RESTful APIs for expert consultation, query submission, and soil test requests
+- Tracks applications for Crop Insurance (PMFBY) and PM Kisan Samman Nidhi Scheme
+- Accesses content and tips through API-driven endpoints
+
 
 ---
 
 ### 👨‍🔬 Expert Services
-- View and respond to farmer queries  
-- Provide farming advice  
-- Manage soil test reports  
-- Publish agricultural articles  
-- Participate in on-site farm visits  
+- Manages queries, soil tests, and advice via role-based API endpoints
+- Publishes articles and participates in field visits using secure API calls
+- Supports multi-role access and workflow management
+
 
 ---
 
@@ -63,62 +59,6 @@ This project is developed using **C# (.NET) in Visual Studio** with a frontend b
 
 ---
 
-## 🧩 System Modules
-
-### 1️⃣ Admin Module
-- Dashboard  
-- Login  
-- Manage Articles  
-- Manage Experts  
-- Manage Farmers  
-- Manage Kisaan Kendra  
-- Manage Soil Test  
-- Manage Staff  
-- View Issues  
-
----
-
-### 2️⃣ Expert Module
-- Dashboard  
-- Give Expert Advice  
-- Manage Articles  
-- Manage Soil Tests  
-- My Profile  
-
----
-
-### 3️⃣ Farmer Module
-- Farm Dashboard  
-- Expert Advice  
-- My Profile  
-- Queries  
-- Soil Test Request  
-
----
-
-### 4️⃣ Kisaan Kendra Module
-- Dashboard  
-- Farmer Registration  
-- Farmer Details  
-- Profile  
-
----
-
-### 5️⃣ Staff Module
-- Dashboard  
-- Manage Queries  
-- Profile  
-
----
-
-### 6️⃣ Home Module
-- Index Page  
-- Services  
-- Articles  
-- Login / Register  
-
----
-
 ## 🏗️ Project Architecture
 
 The project follows a **layered architecture**:
@@ -133,6 +73,7 @@ The project follows a **layered architecture**:
 
 ## 🔐 Security Features
 
+- JWT-based authentication for all users to ensure secure access to APIs
 - Role-based access control (Admin, Expert, Farmer, Staff, Kisaan Kendra)  
 - Middleware for HTTP session validation  
 - Prevents unauthorized access via direct URL entry  
@@ -143,18 +84,23 @@ The project follows a **layered architecture**:
 ## 🧪 Technologies Used
 
 ### 🔙 Backend
-- C# (.NET Framework / ASP.NET MVC or Core)  
-- Visual Studio  
-
+- C# (.NET Core / ASP.NET Web API) – RESTful API development, JWT authentication, multi-user role management
+- Layered Architecture (Controller–Service–Repository–Interface) – Separation of concerns and clean code structure
+- Entity Framework Core – ORM for database integration
+- Visual Studio – Development and debugging
+  
 ### 🎨 Frontend
-- HTML5  
-- CSS3  
-- Bootstrap  
-- JavaScript  
 
+- HTML5, CSS3, Bootstrap, JavaScript – Responsive UI for multiple user roles
+  
 ### 🗄️ Database
-- SQL Server  
+- SQL Server – Relational database with stored procedures and data integrity
+  
+### 🔧 Tools & Utilities
+- GitHub – Version control and project management
+- Swagger – API documentation and testing
 
+  
 ---
 
 ### 📊 Future Enhancements
@@ -183,11 +129,10 @@ The project follows a **layered architecture**:
 ### Article
 <img width="1793" height="799" alt="image" src="https://github.com/user-attachments/assets/8cb1476b-247a-47b8-be89-2c2967a83a1d" />
 <img width="1705" height="679" alt="image" src="https://github.com/user-attachments/assets/19907b0f-6b9a-4fce-b763-90ae8033cb88" />
-<img width="1706" height="649" alt="image" src="https://github.com/user-attachments/assets/a4c50b20-f738-4d11-9156-ca8476f5c1d9" />
 
 ---
 ### Registeration
-
+---
 ### Farmer Registeration
 
 **Personal Details**
@@ -206,30 +151,8 @@ The project follows a **layered architecture**:
 <img width="1612" height="835" alt="image" src="https://github.com/user-attachments/assets/340fe9d2-a2b9-4a95-bcb4-e3f302f7c64d" />
 
 ---
-### Staff Registeration
-
-**Personal Details**
-<img width="1626" height="812" alt="image" src="https://github.com/user-attachments/assets/c547c9ea-14d5-487c-9c58-72f5c384fc01" />
-
-**Other Details**
-<img width="1578" height="655" alt="image" src="https://github.com/user-attachments/assets/78784fc2-e62f-4098-8a73-d4279e2a6001" />
-
----
-### Kisan Kendra Registeration
-
-**Personal Details**
-<img width="1623" height="839" alt="image" src="https://github.com/user-attachments/assets/ddb8eac7-066b-40fb-8bcd-ee3c11d6f300" />
-
-**Other Details**
-<img width="1603" height="817" alt="image" src="https://github.com/user-attachments/assets/e51571ab-c325-4232-8669-bef44a337fc2" />
-
----
 ### Login Page
 <img width="1908" height="609" alt="image" src="https://github.com/user-attachments/assets/7e516c7f-0ead-4983-af28-afb0b8115cc9" />
-<img width="1838" height="529" alt="image" src="https://github.com/user-attachments/assets/f48b3e3d-61de-446b-9c91-7dfcce44ae9b" />
-<img width="1699" height="529" alt="image" src="https://github.com/user-attachments/assets/3cd2a13d-5d02-4084-a36d-1653de58b4b3" />
-<img width="1813" height="510" alt="image" src="https://github.com/user-attachments/assets/6a137108-ffa3-48db-96a7-27823b66ea99" />
-<img width="1662" height="541" alt="image" src="https://github.com/user-attachments/assets/0efd8015-8c49-4b48-afc1-c1f217e72473" />
 
 ---
 ### Admin Login

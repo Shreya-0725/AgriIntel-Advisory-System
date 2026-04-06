@@ -2,13 +2,13 @@
 
 ## 📌 Overview
 
-**AgriIntel Advisory System is a multi-user, API-driven web application built using ASP.NET Core that enables seamless interaction between farmers and agricultural experts.
+AgriIntel Advisory System is a multi-user, API-driven web application built using ASP.NET Core that enables seamless interaction between farmers and agricultural experts.
 
 The system is designed with a layered architecture and provides secure, role-based access for different users including Admin, Expert, Farmer, Staff, and Kisaan Kendra.
 
 It exposes RESTful APIs for handling core functionalities such as query management, expert consultation, soil test requests, and government scheme applications, with JWT-based authentication ensuring secure communication.
 
-The backend is developed using C# (.NET Core), Entity Framework, and SQL Server, while the frontend is built using HTML, CSS, Bootstrap, and JavaScript.**.
+The backend is developed using C# (.NET Core), Entity Framework, and SQL Server, while the frontend is built using HTML, CSS, Bootstrap, and JavaScript.
 
 ---
 

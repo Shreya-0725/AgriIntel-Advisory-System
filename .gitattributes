@@ -1,6 +1,8 @@
+*.html linguist-vendored=true
+*.css linguist-vendored=true
+*.js linguist-vendored=true
 *.html linguist-detectable=false
 *.css linguist-detectable=false
 *.js linguist-detectable=false
-*.html linguist-vendored=true
-*.css linguist-vendored=true
-*.html linguist-documentation=true
+*.html linguist-generated=true
+*.css linguist-generated=true

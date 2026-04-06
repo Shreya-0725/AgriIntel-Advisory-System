@@ -1,5 +1,12 @@
 # 🌱 AgriIntel Advisory System
 
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-C%23-blue)
+![Web API](https://img.shields.io/badge/Web_API-RESTful-green)
+![SQL Server](https://img.shields.io/badge/Database-SQL_Server-red)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
+![Entity Framework](https://img.shields.io/badge/ORM-Entity_Framework-purple)
+![Bootstrap](https://img.shields.io/badge/Frontend-Bootstrap-blueviolet)
+
 ## 📌 Overview
 
 AgriIntel Advisory System is a multi-user, API-driven web application built using ASP.NET Core that enables seamless interaction between farmers and agricultural experts.
